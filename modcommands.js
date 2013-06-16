@@ -1,6 +1,6 @@
 var wMsg = [
-  "here's a tasty reward just for you (>_<)-#",
-  "have a waffle (>_<)-#",
+	"here's a tasty reward just for you (>_<)-#",
+	"have a waffle (>_<)-#",
 	"puppies aren't just for christmas, they are forever. on the other hand, waffles are for now!! om nom nom nom nom (>_<)-#",
 	"nice to eat you, waffle? (>_<)-#",
 	"if promises are waffles and waffles are promises, does that mean that promises are just for the moment in which they are consumed? #-(>_<)-#",
