@@ -734,7 +734,7 @@ function chatListener() {
     		strobeOnCommand.prototype.init = function() {
         		this.command = '/strobe on';
         		this.parseType = 'exact';
-        		return this.rankPrivelege = 'cohost';
+        		return this.rankPrivelege = 'manager';
     		};
     		strobeOnCommand.prototype.functionality = function() {
       			return RoomUser.audience.strobeMode(true);
