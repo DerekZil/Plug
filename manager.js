@@ -678,8 +678,6 @@ function chatListener() {
           				return user.permission === 5;
         			case 'cohost':
           				return user.permission >= 4;
-        			case 'mod':
-          				return user.permission >= 3;
         			case 'manager':
           				return user.permission >= 3;
         			case 'bouncer':
@@ -752,7 +750,7 @@ function chatListener() {
     		strobeOnCommand.prototype.init = function() {
         		this.command = '/strobe on';
         		this.parseType = 'exact';
-        		return this.rankPrivelege = 'manager';
+        		return this.rankPrivelege = 'bouncer';
     		};
     		strobeOnCommand.prototype.functionality = function() {
       			return RoomUser.audience.strobeMode(true);
