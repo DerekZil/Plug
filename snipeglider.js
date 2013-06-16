@@ -825,7 +825,7 @@ function chatListener() {
 
 delay();
 $('#plugbot-js').remove();
-log("Also, welcome to Dubstep, Techno, and Electro custom script, coded by Nitro Ghost. Version: 4.1.4");
+log("Also, welcome to ★Anime Games Music★, coded by Nitro Ghost. Version: 4.1.4");
 log("type '/commands' to see extra commands");
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/NitroGhost/DTE/master/modcommands.js" />');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
