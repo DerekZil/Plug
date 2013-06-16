@@ -124,19 +124,19 @@ var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
 var fbMsg = ["/me like our facebook page! http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms", "/me check out our facebook page at http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms", "/me drop us a like on our facebook page http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms", "/me like our fb page or die! just kidding http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms"];
-var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 4) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. 5) EDM only."];
-var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
-var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
+var rulesMsg = "Rules: 1) for all ages so no porn 2) no songs over 8 mins 3) spamming can lead to an instant ban 4) please keep songs to EDM 5) have fun!";
+var skipMsg = ["please do not ask to skip songs", "asking to skip songs can lead to being kicked", "please please PLEASE don't ask to skip songs D:"];
+var fansMsg = ["please do not ask for fans", "earn your fans!!!", "earn your fans like the rest of us", "the number of fans you have means nothing anyway, so don't ask for them!"];
 var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
 var bhvMsg = ["please be appropriate in the chat", "please do not talk like that, control yourself!",  "please be mature in the chat guys"];
-var sleepMsg = ["Cya later guys, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
-var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
-var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
-var backMsg = ["I have returned!", "I'm baaacckkk];
+var sleepMsg = ["Sleepy time!!!", "going to sleep now", "time to hit the sack", "so tired, sleep is needed me thinks", "tiredness... taking... over... must sleep"];
+var workMsg = ["I'm working so mention me if I'm needed", "I'm going to do work related stuffs, mention if needed", "I'm gonna be busy, mention if needed"];
+var afkMsg = ["I'm going away on a merry merry quest, be back soon!", "going AFK for a while, be back soon!", "going away, be back soon!", "going to hunt the galaxy, be back soon!"];
+var backMsg = ["I'm back from my adventures!", "I'm baaacckkk", "guess who's back? ME! I'm back :D", "be-ber-ber-b-be-back!"];
 
 var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
-var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I'm asleep", "I've gone to sleep"];
-var autoWrkMsg = ["I'm currently working", "I'm busy", "I shall get back to you when i can."];
+var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I've hit the sack", "I'm asleep", "I've gone to sleep"];
+var autoWrkMsg = ["I'm currently working", "I'm busy", "doing work related stuffs"];
 
 var styles = [
             '.sidebar {position: fixed; top: 0; height: 100%; width: 200px; z-index: 99999; background-image: linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -o-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -moz-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -ms-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #000000),color-stop(1, #3B5678));}',
@@ -863,5 +863,4 @@ log("type '/commands' to see extra commands");
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/NitroGhost/DTE/master/modcommands.js" />');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
 $('body').append('</div><div id="side-right" class="sidebar">' + '<div class="sidebar-handle"><span>|||</span></div>' + '<div class="sidebar-content"></div>' + '<div id="hr-div"><div><div id="hr-style"></div></div></div>' + '</div><div id="side-left" class="sidebar">' + '<div class="sidebar-handle" title="show/hide userlist"><span>|||</span></div>' + '<div class="sidebar-content2"></div>' + '<div id="hr2-div2"><div><div id="hr2-style2"></div></div></div>' + '</div>');
-$('body').append('<script type="text/javascript" id="plug-js-extra">' + "\n" + scripts.join("\n") + "\n" + '</script>');
 $('body').append('<script type="text/javascript" id="plug-js-extra">' + "\n" + scripts.join("\n") + "\n" + '</script>');
