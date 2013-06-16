@@ -195,6 +195,7 @@ function initAPIListeners() {
 	API.addEventListener(API.DJ_ADVANCE, djAdvanced);
   	API.addEventListener(API.CHAT, autoRespond);
   	API.addEventListener(API.DJ_UPDATE, queueUpdate);
+  	API.addEventListener(API.ROOM_SCORE_UPDATE, roomSkip);
   	API.addEventListener(API.VOTE_UPDATE, function (obj) {
             	populateUserlist();
 
@@ -435,12 +436,13 @@ function autoRespond(data) {
 }
 
 function djAdvanced(obj) {
+	setTimeout("autoSkip();", 6000);
 	if (hideVideo) {
 		$("#yt-frame").css("height", "0px");
 		$("#playback .frame-background").css("opacity", "0.0");
 	}
 	if (autowoot) {
-		$('#button-vote-positive').click();
+		setTimeout("$('#button-vote-positive').click();", 7000);
 	}
 	if (predictor == false) {
 		predictor = true;
@@ -827,6 +829,8 @@ delay();
 $('#plugbot-js').remove();
 log("Also, welcome to ★Anime Games Music★, coded by Nitro Ghost. Version: 4.1.4");
 log("type '/commands' to see extra commands");
+$('body').prepend('<script type="text/javascript" id="autoskip-js" src="https://raw.github.com/Snipeglider/Plug/master/autoskip.js" />');
+$('body').prepend('<script type="text/javascript" id="blacklist-js" src="https://raw.github.com/Snipeglider/Plug/master/blacklist.js" />');
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/Snipeglider/Plug/master/modcommands.js" />');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
 $('body').append('</div><div id="side-right" class="sidebar">' + '<div class="sidebar-handle"><span>|||</span></div>' + '<div class="sidebar-content"></div>' + '<div id="hr-div"><div><div id="hr-style"></div></div></div>' + '</div><div id="side-left" class="sidebar">' + '<div class="sidebar-handle" title="show/hide userlist"><span>|||</span></div>' + '<div class="sidebar-content2"></div>' + '<div id="hr2-div2"><div><div id="hr2-style2"></div></div></div>' + '</div>');
