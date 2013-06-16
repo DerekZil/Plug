@@ -123,20 +123,20 @@ var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var fbMsg = ["/me like our facebook page! http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms", "/me check out our facebook page at http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms", "/me drop us a like on our facebook page http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms", "/me like our fb page or die! just kidding http://bit.ly/DTandE-FB and/or join us on our forums at http://bit.ly/dteforms"];
-var rulesMsg = "Rules: 1) for all ages so no porn 2) no songs over 8 mins 3) spamming can lead to an instant ban 4) please keep songs to EDM 5) have fun!";
-var skipMsg = ["please do not ask to skip songs", "asking to skip songs can lead to being kicked", "please please PLEASE don't ask to skip songs D:"];
-var fansMsg = ["please do not ask for fans", "earn your fans!!!", "earn your fans like the rest of us", "the number of fans you have means nothing anyway, so don't ask for them!"];
+var fbMsg = [""];
+var rulesMsg = ["/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 4) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. 5) EDM only."];
+var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
+var fansMsg = ["Please do not ask for fans", "Earn your fans like the rest of us"];
 var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
 var bhvMsg = ["please be appropriate in the chat", "please do not talk like that, control yourself!",  "please be mature in the chat guys"];
-var sleepMsg = ["Sleepy time!!!", "going to sleep now", "time to hit the sack", "so tired, sleep is needed me thinks", "tiredness... taking... over... must sleep"];
-var workMsg = ["I'm working so mention me if I'm needed", "I'm going to do work related stuffs, mention if needed", "I'm gonna be busy, mention if needed"];
-var afkMsg = ["I'm going away on a merry merry quest, be back soon!", "going AFK for a while, be back soon!", "going away, be back soon!", "going to hunt the galaxy, be back soon!"];
-var backMsg = ["I'm back from my adventures!", "I'm baaacckkk", "guess who's back? ME! I'm back :D", "be-ber-ber-b-be-back!"];
+var sleepMsg = ["Cya later guys, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
+var workMsg = ["I'm working so mention me if I'm needed", "I'm going to be busy for a while, mention if needed"];
+var afkMsg = ["Stepping away for a moment", "Going AFK for a while, be back soon!"];
+var backMsg = ["I have returned", "I'm baaacckkk"];
 
 var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
 var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I've hit the sack", "I'm asleep", "I've gone to sleep"];
-var autoWrkMsg = ["I'm currently working", "I'm busy", "doing work related stuffs"];
+var autoWrkMsg = ["I'm currently working", "I'm busy", "I shall get back to you when i can."];
 
 var styles = [
             '.sidebar {position: fixed; top: 0; height: 100%; width: 200px; z-index: 99999; background-image: linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -o-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -moz-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -ms-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #000000),color-stop(1, #3B5678));}',
@@ -156,8 +156,6 @@ var styles = [
             '#side-right a:hover {background-color: rgba(97, 146, 199, 0.65);text-decoration: none;}',
             '.sidebar-content2 span:hover {background-color: rgba(97, 146, 199, 0.65);text-decoration: none;}',
             '.sidebar-content2 a:hover {text-decoration: none;}',
-            'html{background: url(http://i.imgur.com/yKpui5L.jpg) no-repeat scroll center top #000000;}',
-            '#room-wheel {z-index: 2;position: absolute;top: 2px;left: 0;width: 1044px;height: 394px;background: url(http://) no-repeat;display: none;}',
             '.chat-bouncer {background: url(http://i.imgur.com/9qWWO4L.png) no-repeat 0 5px;padding-left: 17px;width: 292px;}',
             '.chat-manager {background: url(http://i.imgur.com/hqqhTcp.png) no-repeat 0 5px;padding-left: 17px;width: 292px;}',
             '.chat-cohost {background: url(http://i.imgur.com/njajqVG.png) no-repeat 0 5px;padding-left: 17px;width:292px;}',
@@ -601,259 +599,228 @@ function checkPredict() {
 	}
 }
 
-function strobeListener() {
-  var strobeOnCommand, Command, User, apiHooks, chatCommandDispatcher, cmds, data, hook, initHooks, initialize, populateUserData, settings, undoHooks, unhook,
-    __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
-    __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+function chatListener() {
+  	var antispam, strobeOnCommand, Command, User, apiHooks, chatCommandDispatcher, chatUniversals, cmds, data, hook, initHooks, initialize, populateUserData, settings, undoHooks, unhook,
+    	__bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    	__indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
+    	__hasProp = {}.hasOwnProperty,
+    	__extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  	settings = (function() {
+    		function settings() {
+      			this.getRoomUrlPath = __bind(this.getRoomUrlPath, this);
+      			this.startup = __bind(this.startup, this);
+		}
+    		settings.prototype.users = {};
+    		settings.prototype.roomUrlPath = null;
+    		settings.prototype.launchTime = null;
+    		settings.prototype.startup = function() {
+      		this.launchTime = new Date();
+      		return this.roomUrlPath = this.getRoomUrlPath();
+    		};
+    		settings.prototype.getRoomUrlPath = function() {
+      			return window.location.pathname.replace(/\//g, '');
+    		};
+    		return settings;
+  	})();
+  	data = new settings();
+  	User = (function() {
 
-  settings = (function() {
-
-    function settings() {
-
-      this.getRoomUrlPath = __bind(this.getRoomUrlPath, this);
-
-      this.startup = __bind(this.startup, this);
-
-    }
-
-    settings.prototype.users = {};
-
-    settings.prototype.roomUrlPath = null;
-
-    settings.prototype.launchTime = null;
-
-    settings.prototype.startup = function() {
-      this.launchTime = new Date();
-      return this.roomUrlPath = this.getRoomUrlPath();
-    };
-
-    settings.prototype.getRoomUrlPath = function() {
-      return window.location.pathname.replace(/\//g, '');
-    };
-
-    return settings;
-
-  })();
-
-  data = new settings();
-
-  User = (function() {
-
-    function User(user) {
-      this.user = user;
-
-      this.getIsDj = __bind(this.getIsDj, this);
-
-      this.getUser = __bind(this.getUser, this);
-
-    }
-
-    User.prototype.getUser = function() {
-      return this.user;
-    };
-
-    User.prototype.getIsDj = function() {
-      var DJs, dj, _i, _len;
-      DJs = API.getDJs();
-      for (_i = 0, _len = DJs.length; _i < _len; _i++) {
-        dj = DJs[_i];
-        if (this.user.id === dj.id) {
-          return true;
-        }
-      }
-      return false;
-    };
-
-    return User;
-
-  })();
-  
-  populateUserData = function() {
-    var u, users, _i, _len;
-    users = API.getUsers();
-    for (_i = 0, _len = users.length; _i < _len; _i++) {
-      u = users[_i];
-      data.users[u.id] = new User(u);
-    }
-  };
-
-  initialize = function() {
-    populateUserData();
-    initHooks();
-    data.startup();
-  };
-
-  Command = (function() {
-
-    function Command(msgData) {
-      this.msgData = msgData;
-      this.init();
-    }
-
-    Command.prototype.init = function() {
-      this.parseType = null;
-      this.command = null;
-      return this.rankPrivelege = null;
-    };
-
-    Command.prototype.functionality = function(data) {};
-
-    Command.prototype.hasPrivelege = function() {
-      var user;
-      user = data.users[this.msgData.fromID].getUser();
-      switch (this.rankPrivelege) {
-        case 'host':
-          return user.permission === 5;
-        case 'cohost':
-          return user.permission >= 4;
-        case 'mod':
-          return user.permission >= 3;
-        case 'manager':
-          return user.permission >= 3;
-        case 'bouncer':
-          return user.permission >= 2;
-        case 'featured':
-          return user.permission >= 1;
-        default:
-          return true;
-      }
-    };
-
-    Command.prototype.commandMatch = function() {
-      var command, msg, _i, _len, _ref;
-      msg = this.msgData.message;
-      if (typeof this.command === 'string') {
-        if (this.parseType === 'exact') {
-          if (msg === this.command) {
-            return true;
-          } else {
-            return false;
-          }
-        } else if (this.parseType === 'startsWith') {
-          if (msg.substr(0, this.command.length) === this.command) {
-            return true;
-          } else {
-            return false;
-          }
-        } else if (this.parseType === 'contains') {
-          if (msg.indexOf(this.command) !== -1) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-      } else if (typeof this.command === 'object') {
-        _ref = this.command;
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          command = _ref[_i];
-          if (this.parseType === 'exact') {
-            if (msg === command) {
-              return true;
-            }
-          } else if (this.parseType === 'startsWith') {
-            if (msg.substr(0, command.length) === command) {
-              return true;
-            }
-          } else if (this.parseType === 'contains') {
-            if (msg.indexOf(command) !== -1) {
-              return true;
-            }
-          }
-        }
-        return false;
-      }
-    };
-
-    Command.prototype.evalMsg = function() {
-      if (this.commandMatch() && this.hasPrivelege()) {
-        this.functionality();
-        return true;
-      } else {
-        return false;
-      }
-    };
-
-    return Command;
-
-  })();
-
-  strobeOnCommand = (function(_super) {
-      
-    __extends(strobeOnCommand, _super);
-
-    function strobeOnCommand() {
-        return strobeOnCommand.__super__.constructor.apply(this, arguments);
-    }
-    
-    strobeOnCommand.prototype.init = function() {
-        this.command = '/strobe on';
-        this.parseType = 'exact';
-        return this.rankPrivelege = 'bouncer';
-    };
-
-    strobeOnCommand.prototype.functionality = function() {
-      return RoomUser.audience.strobeMode(true);
-    }
-  
-    return strobeOnCommand;
-    
-  })(Command);
-
-  cmds = [strobeOnCommand];
-  
-  chatCommandDispatcher = function(chat) {
-    var c, cmd, _i, _len, _results;
-    _results = [];
-    for (_i = 0, _len = cmds.length; _i < _len; _i++) {
-      cmd = cmds[_i];
-      c = new cmd(chat);
-      if (c.evalMsg()) {
-        break;
-      } else {
-        _results.push(void 0);
-      }
-    }
-    return _results;
-  };
-
-  hook = function(apiEvent, callback) {
-    return API.addEventListener(apiEvent, callback);
-  };
-
-  unhook = function(apiEvent, callback) {
-    return API.removeEventListener(apiEvent, callback);
-  };
-
-  apiHooks = [
-    {
-      'event': API.CHAT,
-      'callback': chatCommandDispatcher
-    }
-  ];
-
-  initHooks = function() {
-    var pair, _i, _len, _results;
-    _results = [];
-    for (_i = 0, _len = apiHooks.length; _i < _len; _i++) {
-      pair = apiHooks[_i];
-      _results.push(hook(pair['event'], pair['callback']));
-    }
-    return _results;
-  };
-
-  undoHooks = function() {
-    var pair, _i, _len, _results;
-    _results = [];
-    for (_i = 0, _len = apiHooks.length; _i < _len; _i++) {
-      pair = apiHooks[_i];
-      _results.push(unhook(pair['event'], pair['callback']));
-    }
-    return _results;
-  };
-
-  initialize();
+    		function User(user) {
+      			this.user = user;
+      			this.getIsDj = __bind(this.getIsDj, this);
+     			this.getUser = __bind(this.getUser, this);
+    		}
+    		User.prototype.getUser = function() {
+      			return this.user;
+    		};
+    		User.prototype.getIsDj = function() {
+      			var DJs, dj, _i, _len;
+      			DJs = API.getDJs();
+      			for (_i = 0, _len = DJs.length; _i < _len; _i++) {
+        			dj = DJs[_i];
+        			if (this.user.id === dj.id) {
+          				return true;
+        			}
+      			}
+      			return false;
+    		};
+    		return User;
+	})(); 
+  	populateUserData = function() {
+    		var u, users, _i, _len;
+    		users = API.getUsers();
+    		for (_i = 0, _len = users.length; _i < _len; _i++) {
+      			u = users[_i];
+      			data.users[u.id] = new User(u);
+    		}
+  	};
+  	initialize = function() {
+    		populateUserData();
+    		initHooks();
+    		data.startup();
+  	};
+  	Command = (function() {
+    		function Command(msgData) {
+      			this.msgData = msgData;
+      			this.init();
+    		}
+    		Command.prototype.init = function() {
+      			this.parseType = null;
+      			this.command = null;
+      			return this.rankPrivelege = null;
+    		};
+    		Command.prototype.functionality = function(data) {};
+    		Command.prototype.hasPrivelege = function() {
+      			var user;
+     			user = data.users[this.msgData.fromID].getUser();
+     			switch (this.rankPrivelege) {
+        			case 'host':
+          				return user.permission === 5;
+        			case 'cohost':
+          				return user.permission >= 4;
+        			case 'mod':
+          				return user.permission >= 3;
+        			case 'manager':
+          				return user.permission >= 3;
+        			case 'bouncer':
+          				return user.permission >= 2;
+        			case 'featured':
+          				return user.permission >= 1;
+        			default:
+          				return true;
+      			}
+    		};
+    		Command.prototype.commandMatch = function() {
+      			var command, msg, _i, _len, _ref;
+      			msg = this.msgData.message;
+      			if (typeof this.command === 'string') {
+        			if (this.parseType === 'exact') {
+          				if (msg === this.command) {
+            					return true;
+          				} else {
+            					return false;
+          				}
+        			} else if (this.parseType === 'startsWith') {
+          				if (msg.substr(0, this.command.length) === this.command) {
+            					return true;
+          				} else {
+            					return false;
+          				}
+        			} else if (this.parseType === 'contains') {
+          				if (msg.indexOf(this.command) !== -1) {
+            					return true;
+          				} else {
+            					return false;
+          				}
+        			}
+      			} else if (typeof this.command === 'object') {
+        			_ref = this.command;
+        			for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          				command = _ref[_i];
+          				if (this.parseType === 'exact') {
+            					if (msg === command) {
+              						return true;
+            					}
+          				} else if (this.parseType === 'startsWith') {
+            					if (msg.substr(0, command.length) === command) {
+              						return true;
+            					}
+          				} else if (this.parseType === 'contains') {
+            					if (msg.indexOf(command) !== -1) {
+              						return true;
+            					}
+          				}
+        			}
+        			return false;
+      			}
+    		};
+    		Command.prototype.evalMsg = function() {
+      			if (this.commandMatch() && this.hasPrivelege()) {
+        			this.functionality();
+        			return true;
+      			} else {
+        			return false;
+      			}
+    		};
+    		return Command;
+  	})();
+  	strobeOnCommand = (function(_super) { 
+    		__extends(strobeOnCommand, _super);
+    		function strobeOnCommand() {
+        		return strobeOnCommand.__super__.constructor.apply(this, arguments);
+    		}
+    		strobeOnCommand.prototype.init = function() {
+        		this.command = '/strobe on';
+        		this.parseType = 'exact';
+        		return this.rankPrivelege = 'cohost';
+    		};
+    		strobeOnCommand.prototype.functionality = function() {
+      			return RoomUser.audience.strobeMode(true);
+    		}
+    		return strobeOnCommand;
+  	})(Command);
+  	cmds = [strobeOnCommand];
+  	chatCommandDispatcher = function(chat) {
+    		var c, cmd, _i, _len, _results;
+    		chatUniversals(chat);
+    		_results = [];
+    		for (_i = 0, _len = cmds.length; _i < _len; _i++) {
+      			cmd = cmds[_i];
+      			c = new cmd(chat);
+      			if (c.evalMsg()) {
+        			break;
+      			} else {
+        			_results.push(void 0);
+      			}
+    		}
+    		return _results;
+  	};
+  	antispam = function(chat) {
+  		var plugRoomLinkPatt, sender;
+  		plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?adf\.ly[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  		if (plugRoomLinkPatt.exec(chat.message)) {
+    			sender = API.getUser(chat.fromID);
+    			if (!sender.ambassador && !sender.moderator && !sender.owner && !sender.superuser) {
+    				API.sendChat("@" + sender.username + " " + spamMsg[Math.floor(Math.random() * spamMsg.length)]);
+       				return API.moderateDeleteChat(chat.chatID);
+     			}
+   		}
+   		return antispam;
+ 	};
+  	chatUniversals = function(chat) {
+      		antispam(chat);
+  	};
+  	hook = function(apiEvent, callback) {
+    		return API.addEventListener(apiEvent, callback);
+  	};
+  	unhook = function(apiEvent, callback) {
+    		return API.removeEventListener(apiEvent, callback);
+  	};
+  	apiHooks = [
+    		{
+      			'event': API.CHAT,
+      			'callback': chatCommandDispatcher
+    		}
+  	];
+  	initHooks = function() {
+    		var pair, _i, _len, _results;
+    		_results = [];
+    		for (_i = 0, _len = apiHooks.length; _i < _len; _i++) {
+      			pair = apiHooks[_i];
+      			_results.push(hook(pair['event'], pair['callback']));
+    		}
+    		return _results;
+  		};
+  	undoHooks = function() {
+    		var pair, _i, _len, _results;
+   		 _results = [];
+    		for (_i = 0, _len = apiHooks.length; _i < _len; _i++) {
+      			pair = apiHooks[_i];
+      			_results.push(unhook(pair['event'], pair['callback']));
+    		}
+    		return _results;
+  	};
+  	initialize();
 }
 
 delay();
