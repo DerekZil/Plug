@@ -600,7 +600,7 @@ function checkPredict() {
 }
 
 function chatListener() {
-  	var antispam, strobeOnCommand, Command, User, apiHooks, chatCommandDispatcher, chatUniversals, cmds, data, hook, initHooks, initialize, populateUserData, settings, undoHooks, unhook,
+  	var strobeOnCommand, Command, User, apiHooks, chatCommandDispatcher, cmds, data, hook, initHooks, initialize, populateUserData, settings, undoHooks, unhook,
     	__bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     	__indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
     	__hasProp = {}.hasOwnProperty,
@@ -762,7 +762,6 @@ function chatListener() {
   	cmds = [strobeOnCommand];
   	chatCommandDispatcher = function(chat) {
     		var c, cmd, _i, _len, _results;
-    		chatUniversals(chat);
     		_results = [];
     		for (_i = 0, _len = cmds.length; _i < _len; _i++) {
       			cmd = cmds[_i];
@@ -774,21 +773,6 @@ function chatListener() {
       			}
     		}
     		return _results;
-  	};
-  	antispam = function(chat) {
-  		var plugRoomLinkPatt, sender;
-  		plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?adf\.ly[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-  		if (plugRoomLinkPatt.exec(chat.message)) {
-    			sender = API.getUser(chat.fromID);
-    			if (!sender.ambassador && !sender.moderator && !sender.owner && !sender.superuser) {
-    				API.sendChat("@" + sender.username + " " + spamMsg[Math.floor(Math.random() * spamMsg.length)]);
-       				return API.moderateDeleteChat(chat.chatID);
-     			}
-   		}
-   		return antispam;
- 	};
-  	chatUniversals = function(chat) {
-      		antispam(chat);
   	};
   	hook = function(apiEvent, callback) {
     		return API.addEventListener(apiEvent, callback);
