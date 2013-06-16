@@ -1,5 +1,5 @@
 overPlayed = [
-        //insert song ID's here followed by a comma
+        //insert song ID's here followed by a comma. you can get the song ID by using the /op command. make sure you copy the quoations
 ];
 
 function autoSkip() {
