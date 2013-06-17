@@ -1,5 +1,5 @@
 function delay() {
-  setTimeout("load();", 6000);
+	setTimeout("load();", 6000);
 	setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();}, 4000);
 	setTimeout("chatListener()", 10000);
 }
