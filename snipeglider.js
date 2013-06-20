@@ -126,12 +126,12 @@ var MAX_USERS_WAITLIST = 50;
 var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
 var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. 5) EDM only.";
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
-var fansMsg = ["Please do not ask for fans", "Earn your fans like the rest of us"];
+var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
 var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
 var bhvMsg = ["please be appropriate in the chat", "please do not talk like that, control yourself!",  "please be mature in the chat guys"];
-var sleepMsg = ["Cya later guys, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
-var workMsg = ["I'm working so mention me if I'm needed", "I'm going to be busy for a while, mention if needed"];
-var afkMsg = ["Stepping away for a moment", "Going AFK for a while, be back soon!"];
+var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
+var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
+var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned", "I'm baaacckkk"];
 
 var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
