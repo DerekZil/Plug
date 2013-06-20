@@ -1,5 +1,5 @@
-blacklist = [
-        //insert users ID follwed by comma. you can get it by doing /id @(username) and make sure you copy the quotations
+blacklist = ["50aeb73a96fba52c3ca13afa"
+        
 ];
 
 API.addEventListener(API.USER_JOIN, checkBlacklist);
