@@ -124,7 +124,7 @@ var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
 var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
-var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. Play whatever you want with anime! (EDM prefered).";
+var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. Have fun!";
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
 var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
