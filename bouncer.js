@@ -123,8 +123,9 @@ var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl "];
 var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. Have fun!";
+var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
+var enMsg = ["English only in chat please!", "Please could you talk in English", "This is an English speaking room only"];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
 var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
@@ -134,9 +135,9 @@ var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned", "I'm baaacckkk"];
 
-var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "Gone away for a moment.", "Not present at keyboard."];
-var autoSlpMsg = ["I'm currently sleeping.", "I'm counting sheep in my dreams.", "I'm asleep.", "I've gone to sleep."];
-var autoWrkMsg = ["I'm currently working.", "I'm busy.", "I shall get back to you when i can."];
+var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
+var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I've hit the sack", "I'm asleep", "I've gone to sleep"];
+var autoWrkMsg = ["I'm currently working", "I'm busy", "I shall get back to you when i can."];
 
 var styles = [
             '.sidebar {position: fixed; top: 0; height: 100%; width: 200px; z-index: 99999; background-image: linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -o-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -moz-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -ms-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #000000),color-stop(1, #3B5678));}',
@@ -215,21 +216,26 @@ function displayUI() {
     	var colorEmotes = emotes ? '#3FFF00' : '#ED1C24';
     	var colorAudience = audience ? '#3FFF00' : '#ED1C24';
 	$('#side-right .sidebar-content').append(
-			'<a id="plug-btn-woot" title="toggles auto woot" style="color:' + colorWoot + '">auto woot</a>'
-		+ 	'<a id="plug-btn-queue" title="toggles auto queue" style="color:' + colorQueue + '">auto queue</a>'
-		+ 	'<a id="plug-btn-stream" title="toggles video stream" style="color:' + colorStream + '">streaming</a>'
-		+ 	'<a id="plug-btn-hidevideo" title="toggles hide video" style="color:' + colorVideo + '">hide video</a>'
-		+	'<a id="plug-btn-emotes" title="toggles emoticons" style="color:' + colorEmotes + '">emoticons</a>'
-		+	'<a id="plug-btn-audience" title="toggles audience" style="color:' + colorAudience + '">audience</a>'
-		+	'<a id="plug-btn-rules" title="sends rules" style="color:#FF8C00">rules</a>'
-		+	'<a id="plug-btn-face" title="sends fb and forums links" style="color:#FF8C00">social links</a>'
-		+	'<a id="plug-btn-fans" title="sends fan message" style="color:#FF8C00">no fans</a>'
-		+	'<a id="plug-btn-noskip" title="send no skip message" style="color:#FF8C00">no skip</a>'
-		+	'<a id="plug-btn-waffles" title="sends waffle message" style="color:#FF8C00">waffles</a>'
-		+	'<a id="plug-btn-sleeping" title="sends sleep message and sets status to sleeping" style="color:#FF8C00">sleeping</a>'
-		+	'<a id="plug-btn-working" title="sends work message and sets status to working" style="color:#FF8C00">working</a>'
-		+	'<a id="plug-btn-afk" title="sends afk message and sets status to afk" style="color:#FF8C00">afk</a>'
-		+	'<a id="plug-btn-back" title="sends available message and sets status to available" style="color:#FF8C00">available</a>'
+			'<a title="Settings" style="color:#FFFFF">Settings:</a>'
+		+	'<a id="plug-btn-woot" title="Toggle AutoWoot" style="color:' + colorWoot + '">Auto Woot</a>'
+		+ 	'<a id="plug-btn-queue" title="Toggle AutoQueue" style="color:' + colorQueue + '">Auto Queue</a>'
+		+ 	'<a id="plug-btn-stream" title="Toggle Video Stream" style="color:' + colorStream + '">Video Streaming</a>'
+		+ 	'<a id="plug-btn-hidevideo" title="Toggle Video" style="color:' + colorVideo + '">Hide Video</a>'
+		+	'<a id="plug-btn-emotes" title="Toggle Emoticons" style="color:' + colorEmotes + '">Emoticons</a>'
+		+	'<a id="plug-btn-audience" title="Toggle Audience" style="color:' + colorAudience + '">Audience</a>'
+		+	'<a title="Messages" style="color:#FFFFF">Messages:</a>'
+		+	'<a id="plug-btn-rules" title="Sends rules" style="color:#FF8C00">Rules</a>'
+		+	'<a id="plug-btn-face" title="Sends fb and forums links" style="color:#FF8C00">Social Links</a>'
+		+	'<a id="plug-btn-en" title="Sends English only message" style="color:#FF8C00">English Only</a>'
+		+	'<a id="plug-btn-fans" title="Sends fan message" style="color:#FF8C00">No Fans</a>'
+		+	'<a id="plug-btn-noskip" title="Send no skip message" style="color:#FF8C00">No Skip</a>'
+		+	'<a id="plug-btn-waffles" title="Sends waffle message" style="color:#FF8C00">Waffles</a>'
+		+	'<a title="Changes your status" style="color:#FFFFF">Status:</a>'
+		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping" style="color:#FF8FEE">Sleeping</a>'
+		+	'<a id="plug-btn-working" title="Sends work message and sets status to working" style="color:#FF8FEE">Working</a>'
+		+	'<a id="plug-btn-afk" title="Sends afk message and sets status to afk" style="color:#FF8FEE">AFK</a>'
+		+	'<a id="plug-btn-back" title="Sends available message and sets status to available" style="color:#FF8FEE">Available</a>'
+		+	'<a title="Moderation" style="color:#FFFFF">Moderation:</a>'
 		+	'<a id="plug-btn-skip" title="skips current DJ" style="color:#E90E82">skip</a>'
     );
 }
@@ -293,18 +299,18 @@ function initUIListeners() {
 		}
 		jaaulde.utils.cookies.set(COOKIE_AUDIENCE, audience);
 	});
-	$("#plug-btn-face").on("click", function() {
-		if (clicked == false) {
-			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
-		API.sendChat(fbMsg[Math.floor(Math.random() * fbMsg.length)]);
-		}
-	});
 	$("#plug-btn-rules").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
 			API.sendChat(rulesMsg);
+		}
+	});
+	$("#plug-btn-en").on("click", function() {
+		if (clicked == false) {
+			clicked = true;
+			clickTimer = setInterval("checkClicked();", 1000);
+		API.sendChat(enMsg[Math.floor(Math.random() * enMsg.length)]);
 		}
 	});
 	$("#plug-btn-fans").on("click", function() {
@@ -374,6 +380,9 @@ function initUIListeners() {
 			skipTimer = setInterval("checkSkipped();", 500);
 			new ModerationForceSkipService;
 		}
+	});
+	$("#plug-btn-lock").on("click", function() {
+		new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);
 	});
 }
 
