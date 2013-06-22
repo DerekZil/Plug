@@ -217,7 +217,7 @@ function displayUI() {
     	var colorEmotes = emotes ? '#3FFF00' : '#ED1C24';
     	var colorAudience = audience ? '#3FFF00' : '#ED1C24';
 	$('#side-right .sidebar-content').append(
-			'<a title="Commands" style="color:#FFFFF">Commands:</a>'
+			'<a title="Settings" style="color:#FFFFF">Settings:</a>'
 		+	'<a id="plug-btn-woot" title="Toggle AutoWoot" style="color:' + colorWoot + '">Auto Woot</a>'
 		+ 	'<a id="plug-btn-queue" title="Toggle AutoQueue" style="color:' + colorQueue + '">Auto Queue</a>'
 		+ 	'<a id="plug-btn-stream" title="Toggle Video Stream" style="color:' + colorStream + '">Video Streaming</a>'
