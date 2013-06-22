@@ -134,6 +134,7 @@ var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", 
 var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned", "I'm baaacckkk"];
+var spamMsg = ["please get rid of your autowoot, it spams the chat", "your autowoot is no good, it spams the chat without you knowing and would be best to remove it", "if you do not remove your spammy autowoot you will be kicked", "your autowoot is no good, remove it or you will leave the room", "Luke! I am your father, and I say remove your autowoot because it is spammy, or perish in the fires of the darkside"];
 
 var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
 var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I've hit the sack", "I'm asleep", "I've gone to sleep"];
