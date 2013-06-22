@@ -302,18 +302,18 @@ function initUIListeners() {
 		}
 		jaaulde.utils.cookies.set(COOKIE_AUDIENCE, audience);
 	});
-	$("#plug-btn-face").on("click", function() {
-		if (clicked == false) {
-			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
-		API.sendChat(fbMsg[Math.floor(Math.random() * fbMsg.length)]);
-		}
-	});
 	$("#plug-btn-rules").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
 			API.sendChat(rulesMsg);
+		}
+	});
+	$("#plug-btn-en").on("click", function() {
+		if (clicked == false) {
+			clicked = true;
+			clickTimer = setInterval("checkClicked();", 1000);
+		API.sendChat(enMsg[Math.floor(Math.random() * enMsg.length)]);
 		}
 	});
 	$("#plug-btn-fans").on("click", function() {
