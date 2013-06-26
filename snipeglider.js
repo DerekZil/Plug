@@ -136,9 +136,9 @@ var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soo
 var backMsg = ["I have returned", "I'm baaacckkk"];
 var spamMsg = ["Please get rid of your autowoot, it spams the chat.", "Your autowoot is no good, it spams the chat without you knowing and would be best to remove it.", "If you do not remove your autowoot you will be kicked.", "Your autowoot is no good, remove it or you will leave the room.", "Luke! I am your father, and I say remove your autowoot because it is spamming the chat, or perish in the fires of the darkside!"];
 
-var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
-var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I've hit the sack", "I'm asleep", "I've gone to sleep"];
-var autoWrkMsg = ["I'm currently working", "I'm busy", "I shall get back to you when i can."];
+var autoAwayMsg = ["I'm currently AFK.", "I'm AFK", "I'm on an adventure. (afk)", "gone away for a moment", "not present at keyboard"];
+var autoSlpMsg = ["I'm currently sleeping.", "I'm counting sheep in my dreams.", "I'm asleep.", "I've gone to sleep."];
+var autoWrkMsg = ["I'm currently working.", "I'm busy", "I shall get back to you when i can."];
 
 var styles = [
             '.sidebar {position: fixed; top: 0; height: 100%; width: 200px; z-index: 99999; background-image: linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -o-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -moz-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -ms-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #000000),color-stop(1, #3B5678));}',
