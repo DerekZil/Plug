@@ -1,6 +1,4 @@
-blacklist = [
-        
-];
+blacklist = ["50aeb73a96fba52c3ca13afa"];
 
 API.addEventListener(API.USER_JOIN, checkBlacklist);
 
