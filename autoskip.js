@@ -1,6 +1,4 @@
-overPlayed = [
-        //insert song ID's here followed by a comma. you can get it by using '/op' make sure you copy the quoations
-];
+overPlayed = ["1:chV6DSBeI7k"];
 
 function autoSkip() {
 	if (overPlayed.indexOf(Models.room.data.media.id) > -1) {
