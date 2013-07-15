@@ -541,9 +541,9 @@ function populateUserlist() {
         $('#side-left .sidebar-content2').append(spot !== null ? timeDiv : '');
         $('#side-left .sidebar-content2').append('<div class="meanlist"></div>');
         $(".meanlist").append( 
-        		'<div id="currentdj_div" style="border: 1px solid rgb(0, 112, 255);"><a title="current dj">current dj:</a>' +   currentdj + '</div>'
-        	+ 	'<div id="mehlist_div" style="border: 1px solid rgb(233, 6, 6);"><a title="meh list">meh list:</a>' +   mehlist + '</div>' 
-        	+ 	'<div id="wootlist_div" style="border: 1px solid rgb(2, 140, 7);"><a title="woot list">woot list:</a>' + wootlist + '</div>'
+        		'<div id="currentdj_div" style="border: 1px solid rgb(0, 112, 255);"><a title="current dj">Current Dj:</a>' +   currentdj + '</div>'
+        	+ 	'<div id="mehlist_div" style="border: 1px solid rgb(233, 6, 6);"><a title="meh list">Meh List:</a>' +   mehlist + '</div>' 
+        	+ 	'<div id="wootlist_div" style="border: 1px solid rgb(2, 140, 7);"><a title="woot list">Woot List:</a>' + wootlist + '</div>'
         	+	'<div id="spacer_div"></br></br></div>'
         );
 }
