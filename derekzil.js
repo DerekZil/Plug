@@ -123,8 +123,8 @@ var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var rulesMsg = "/me Rules: 1) No spamming 2) No posting lewd content (pictures/videos/doujins) ect. 3) No songs over 7 minutes unless under certain conditions (A featured artist playing a mix.) 4) Please speak English. Have fun!";
-var fbMsg = ["/me Check out the promoters on their youtube channels! HDmusicNexus: http://www.youtube.com/HDmusicNexus HDdubRAVE3: http://www.youtube.com/HDdubRave3 HDMusicGirl:http://www.youtube.com/TheHDMusicGirl"];
+var rulesMsg = "/me Rules: 1.) Do not ask to skip a song. 2.) No Spamming. 3.) No songs over 8 minutes. 4.) No NSFW content: porn, gore, etc. 5.) Don't argue with higher ranks. 6.) No advertising other rooms. 7.) Please don't post scripts in chat.";
+var fbMsg = ["/me Check out our social links for DTE! Facebook Page: http://bit.ly/DTandE-FB , Forums - http://bit.ly/dteforms"];
 var enMsg = ["English only in chat!", "Speak English or you will get kicked."];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
@@ -226,22 +226,22 @@ function displayUI() {
 		+	'<a id="plug-btn-emotes" title="Toggle Emoticons" style="color:' + colorEmotes + '">Emoticons</a>'
 		+	'<a id="plug-btn-audience" title="Toggle Audience" style="color:' + colorAudience + '">Audience</a>'
 		+	'<a title="Messages" style="color:#FFFFF">Messages:</a>'
-		+	'<a id="plug-btn-rules" title="Sends rules" style="color:#FF8C00">Rules</a>'
-		+	'<a id="plug-btn-face" title="Sends fb and forums links" style="color:#FF8C00">Social Links</a>'
-		+	'<a id="plug-btn-en" title="Sends English only message" style="color:#FF8C00">English Only</a>'
-		+	'<a id="plug-btn-fans" title="Sends fan message" style="color:#FF8C00">No Fans</a>'
-		+	'<a id="plug-btn-noskip" title="Send no skip message" style="color:#FF8C00">No Skip</a>'
-		+	'<a id="plug-btn-waffles" title="Sends waffle message" style="color:#FF8C00">Waffles</a>'
+		+	'<a id="plug-btn-rules" title="Sends Rules" style="color:#FF8C00">Rules</a>'
+		+	'<a id="plug-btn-face" title="Sends Facebook and Forums links." style="color:#FF8C00">Social Links</a>'
+		+	'<a id="plug-btn-en" title="Sends English only message." style="color:#FF8C00">English Only</a>'
+		+	'<a id="plug-btn-fans" title="Sends no fan message." style="color:#FF8C00">No Fans</a>'
+		+	'<a id="plug-btn-noskip" title="Sends no skip message." style="color:#FF8C00">No Skip</a>'
+		+	'<a id="plug-btn-waffles" title="Sends waffle message." style="color:#FF8C00">Waffles</a>'
 		+	'<a title="Changes your status" style="color:#FFFFF">Status:</a>'
-		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping" style="color:#FF8FEE">Sleeping</a>'
-		+	'<a id="plug-btn-working" title="Sends work message and sets status to working" style="color:#FF8FEE">Working</a>'
-		+	'<a id="plug-btn-afk" title="Sends afk message and sets status to afk" style="color:#FF8FEE">AFK</a>'
-		+	'<a id="plug-btn-back" title="Sends available message and sets status to available" style="color:#FF8FEE">Available</a>'
+		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping." style="color:#FF8FEE">Sleeping</a>'
+		+	'<a id="plug-btn-working" title="Sends work message and sets status to working." style="color:#FF8FEE">Working</a>'
+		+	'<a id="plug-btn-afk" title="Sends AFK message and sets status to AFK." style="color:#FF8FEE">AFK</a>'
+		+	'<a id="plug-btn-back" title="Sends available message and sets status to available." style="color:#FF8FEE">Available</a>'
 		+	'<a title="Moderation" style="color:#FFFFF">Moderation:</a>'
-		+	'<a id="plug-btn-skip" title="Skips current DJ" style="color:#E90E82">Skip</a>'
-		+	'<a id="plug-btn-lock" title="Locks booth" style="color:#E90E82">Lock</a>'
-		+	'<a id="plug-btn-unlock" title="Unlocks booth" style="color:#E90E82">Unlock</a>'
-		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth" style="color:#E90E82">Lockskip</a>'
+		+	'<a id="plug-btn-skip" title="Skips current DJ." style="color:#E90E82">Skip</a>'
+		+	'<a id="plug-btn-lock" title="Locks Booth" style="color:#E90E82">Lock</a>'
+		+	'<a id="plug-btn-unlock" title="Unlocks Booth" style="color:#E90E82">Unlock</a>'
+		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth." style="color:#E90E82">Lockskip</a>'
     );
 }
 
@@ -524,24 +524,24 @@ function populateUserlist() {
         	totalMEHsPercentage = totalWOOTsPercentage = 0;
     	}
     	currentdj = ' ' + currentdj;
-	mehlist = '<a title="total mehs">' + ' ' + totalMEHs.toString() + '</a><a title="Meh percentage">' + ' (' + totalMEHsPercentage.toString() + '&#37;)' + '</a>' + mehlist;
-    	wootlist = '<a title="total woots">' + ' ' + totalWOOTs.toString() + '</a><a title="Woot percentage">' + ' (' + totalWOOTsPercentage.toString() + '&#37;)' + '</a>' + wootlist;
+	mehlist = '<a title="Total Mehs">' + ' ' + totalMEHs.toString() + '</a><a title="Meh Percentage">' + ' (' + totalMEHsPercentage.toString() + '&#37;)' + '</a>' + mehlist;
+    	wootlist = '<a title="Total Woots">' + ' ' + totalWOOTs.toString() + '</a><a title="Woot Percentage">' + ' (' + totalWOOTsPercentage.toString() + '&#37;)' + '</a>' + wootlist;
     	undecidedlist = ' ' + totalUNDECIDEDs.toString() + undecidedlist;
 	if ($('#side-left .sidebar-content2').children().length > 0) {
             	$('#side-left .sidebar-content2').append();
 	}
-        $('#side-left .sidebar-content2').html('<h3 class="users" title="number of users in the room">users: ' + API.getUsers().length + '</h3>');
+        $('#side-left .sidebar-content2').html('<h3 class="users" title="Number of users in the room.">users: ' + API.getUsers().length + '</h3>');
         var spot = Models.room.getWaitListPosition();
-        var waitlistDiv = $('<h3 title="waitlist posisition"></h3>').addClass('waitlistspot').text('waitlist: ' + (spot !== null ? spot + ' / ' : '') + Models.room.data.waitList.length);
+        var waitlistDiv = $('<h3 title="Waitlist Posisition"></h3>').addClass('waitlistspot').text('waitlist: ' + (spot !== null ? spot + ' / ' : '') + Models.room.data.waitList.length);
         var waitpostime = Models.room.getWaitListPosition() * 240;
         var offset = API.getMedia().duration - 240;
         var approxtime = waitpostime + offset;
-        var timeDiv = $('<h3 title="approx. wait time until on the booth"</h3>').addClass('timewait').text('wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
+        var timeDiv = $('<h3 title="Estimated wait time until on the booth."</h3>').addClass('timewait').text('wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
         $('#side-left .sidebar-content2').append(waitlistDiv);
         $('#side-left .sidebar-content2').append(spot !== null ? timeDiv : '');
         $('#side-left .sidebar-content2').append('<div class="meanlist"></div>');
         $(".meanlist").append( 
-        		'<div id="currentdj_div" style="border: 1px solid rgb(0, 112, 255);"><a title="current dj">Current Dj:</a>' +   currentdj + '</div>'
+        		'<div id="currentdj_div" style="border: 1px solid rgb(0, 112, 255);"><a title="current dj">Current DJ:</a>' +   currentdj + '</div>'
         	+ 	'<div id="mehlist_div" style="border: 1px solid rgb(233, 6, 6);"><a title="meh list">Meh List:</a>' +   mehlist + '</div>' 
         	+ 	'<div id="wootlist_div" style="border: 1px solid rgb(2, 140, 7);"><a title="woot list">Woot List:</a>' + wootlist + '</div>'
         	+	'<div id="spacer_div"></br></br></div>'
@@ -835,7 +835,7 @@ function chatListener() {
 delay();
 $('#plugbot-js').remove();
 log("Also, welcome to ★Insanity Realms★, coded by DerekZil. Version: 4.1.4");
-log("type '/commands' to see extra commands");
+log("Type '/commands' to see extra commands.");
 $('body').prepend('<script type="text/javascript" id="autoskip-js" src="https://raw.github.com/DerekZil/Plug/master/autoskip.js" />');
 $('body').prepend('<script type="text/javascript" id="blacklist-js" src="https://raw.github.com/DerekZil/Plug/master/blacklist.js" />');
 $('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/DerekZil/Plug/master/modcommands.js" />');
