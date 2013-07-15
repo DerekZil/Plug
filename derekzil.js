@@ -124,7 +124,7 @@ var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
 var rulesMsg = "/me Rules: 1.) Do not ask to skip a song. 2.) No Spamming. 3.) No songs over 8 minutes. 4.) No NSFW content: porn, gore, etc. 5.) Don't argue with higher ranks. 6.) No advertising other rooms. 7.) Please don't post scripts in chat.";
-var fbMsg = "/me Check out our social links for DTE! Facebook Page: http://bit.ly/DTandE-FB Forums: http://bit.ly/dteforms";
+var fbMsg = "/me Check out our social links for DTE! Facebook Page: http://bit.ly/DTandE-FB - Forums: http://bit.ly/dteforms";
 var enMsg = ["English only in chat!", "Speak English or you will get kicked."];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
