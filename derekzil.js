@@ -311,6 +311,13 @@ function initUIListeners() {
 			API.sendChat(rulesMsg);
 		}
 	});
+	$("#plug-btn-face").on("click", function() {
+		if (clicked == false) {
+			clicked = true;
+			clickTimer = setInterval("checkClicked();", 1000);
+		API.sendChat(enMsg[Math.floor(Math.random() * fbMsg.length)]);
+		}
+	});
 	$("#plug-btn-en").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
