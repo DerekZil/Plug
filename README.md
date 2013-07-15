@@ -1,2 +1,2 @@
-★Anime Games Music★ Scripts
+★Insanity Realms★ Scripts
 ====
