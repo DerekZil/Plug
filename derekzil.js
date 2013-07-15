@@ -232,7 +232,7 @@ function displayUI() {
 		+	'<a id="plug-btn-fans" title="Sends no fan message." style="color:#FF8C00">No Fans</a>'
 		+	'<a id="plug-btn-noskip" title="Sends no skip message." style="color:#FF8C00">No Skip</a>'
 		+	'<a id="plug-btn-waffles" title="Sends waffle message." style="color:#FF8C00">Waffles</a>'
-		+	'<a title="Changes your status" style="color:#FFFFF">Status:</a>'
+		+	'<a title="Status" style="color:#FFFFF">Status:</a>'
 		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping." style="color:#FF8FEE">Sleeping</a>'
 		+	'<a id="plug-btn-working" title="Sends work message and sets status to working." style="color:#FF8FEE">Working</a>'
 		+	'<a id="plug-btn-afk" title="Sends AFK message and sets status to AFK." style="color:#FF8FEE">AFK</a>'
