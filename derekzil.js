@@ -8,7 +8,7 @@ function load() {
 	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
-	script.src = 'http://cookies.googlecode.com/svn/trunk/jaaulde.cookies.js';
+	script.src = 'https://raw.github.com/DerekZil/Plug/master/cookies.js';
 	script.onload = readCookies;
 	head.appendChild(script);
 }
