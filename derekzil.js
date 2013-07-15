@@ -128,13 +128,13 @@ var fbMsg = "/me Check out our social links for DTE! Facebook Page: http://bit.l
 var enMsg = ["English only in chat!", "Speak English or you will get kicked."];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
-var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
+var wafflesMsg = ["How is everyone doing!", "Enjoying the room?", "What's up everybody!", "Welcome to DTE have fun!"];
 var bhvMsg = ["Please be appropriate in the chat.", "Please do not talk like that, control yourself!",  "Please be mature in the chat guys."];
-var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
-var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
+var sleepMsg = ["Bye, I am out for tonight!", "Going to sleep now.", "Bed time!", "Tiredness... taking... over... must sleep."];
+var workMsg = ["I'm off to work, cya.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned.", "I'm bacckkk."];
-var spamMsg = ["Please get rid of your autowoot, it spams the chat.", "Your autowoot is no good, it spams the chat without you knowing and would be best to remove it.", "If you do not remove your autowoot you will be kicked.", "Your autowoot is no good, remove it or you will leave the room.", "Luke! I am your father, and I say remove your autowoot because it is spamming the chat, or perish in the fires of the darkside!"];
+var spamMsg = ["Please get rid of your AutoWoot, it spams the chat.", "Your AutoWoot is no good, it spams the chat without you knowing and would be best to remove it.", "If you do not remove your AutoWoot you will be kicked.", "Your AutoWoot is no good, remove it or you will leave the room.", "Remove your autowoot because it is spamming the chat, or perish from my virtual kick in the face!"];
 
 var autoAwayMsg = ["I'm currently AFK.", "I'm AFK.", "I'm on an adventure. (AFK)", "Gone away for a moment", "Not present at keyboard."];
 var autoSlpMsg = ["I'm currently sleeping.", "I'm counting sheep in my dreams.", "I'm asleep.", "I've gone to sleep."];
