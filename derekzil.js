@@ -315,7 +315,7 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-		API.sendChat(enMsg[Math.floor(Math.random() * fbMsg.length)]);
+			API.sendChat(fbMsg);
 		}
 	});
 	$("#plug-btn-en").on("click", function() {
