@@ -123,7 +123,7 @@ var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var rulesMsg = "/me Rules: 1.) Do not ask to skip a song. 2.) No Spamming. 3.) No songs over 8 minutes. 4.) No NSFW content: porn, gore, etc. 5.) Don't argue with higher ranks. 6.) No advertising other rooms. 7.) Please don't post scripts in chat.";
+var rulesMsg = "/me Rules: 1.) Do not ask to skip a song. 2.) No Spamming. 3.) No songs over 8 minutes. 4.) No NSFW content: Nudity, gore, etc. 5.) Don't argue with higher ranks. 6.) No advertising other rooms. 7.) Please don't post scripts in chat.";
 var fbMsg = "/me Check out our social links for DTE! Facebook Page: http://bit.ly/DTandE-FB - Forums: http://bit.ly/dteforms";
 var enMsg = ["English only in chat!", "Speak English or you will get kicked."];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
@@ -134,11 +134,11 @@ var sleepMsg = ["Bye, I am out for tonight!", "Going to sleep now.", "Bed time!"
 var workMsg = ["I'm off to work, cya.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
 var backMsg = ["I have returned.", "I'm bacckkk."];
-var spamMsg = ["Please get rid of your AutoWoot, it spams the chat.", "Your AutoWoot is no good, it spams the chat without you knowing and would be best to remove it.", "If you do not remove your AutoWoot you will be kicked.", "Your AutoWoot is no good, remove it or you will leave the room.", "Remove your autowoot because it is spamming the chat, or perish from my virtual kick in the face!"];
+var spamMsg = ["Please get rid of your AutoWoot, it spams the chat.", "Your AutoWoot is no good, it spams the chat without you knowing and would be best to remove it.", "If you do not remove your AutoWoot you will be kicked.", "Your AutoWoot is no good, remove it or you will leave the room.", "Remove your autowoot because it is spamming the chat, or perish from my virtual kick!"];
 
 var autoAwayMsg = ["I'm currently AFK.", "I'm AFK.", "I'm on an adventure. (AFK)", "Gone away for a moment", "Not present at keyboard."];
 var autoSlpMsg = ["I'm currently sleeping.", "I'm counting sheep in my dreams.", "I'm asleep.", "I've gone to sleep."];
-var autoWrkMsg = ["I'm currently working.", "I'm busy", "I shall get back to you when I can."];
+var autoWrkMsg = ["I'm currently working.", "I'm busy.", "I shall get back to you when I can."];
 
 var styles = [
             '.sidebar {position: fixed; top: 0; height: 100%; width: 200px; z-index: 99999; background-image: linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -o-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -moz-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -ms-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #000000),color-stop(1, #3B5678));}',
