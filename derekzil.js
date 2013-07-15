@@ -238,10 +238,10 @@ function displayUI() {
 		+	'<a id="plug-btn-afk" title="Sends afk message and sets status to afk" style="color:#FF8FEE">AFK</a>'
 		+	'<a id="plug-btn-back" title="Sends available message and sets status to available" style="color:#FF8FEE">Available</a>'
 		+	'<a title="Moderation" style="color:#FFFFF">Moderation:</a>'
-		+	'<a id="plug-btn-skip" title="Skips current DJ" style="color:#E90E82">skip</a>'
-		+	'<a id="plug-btn-lock" title="Locks booth" style="color:#E90E82">lock</a>'
-		+	'<a id="plug-btn-unlock" title="Unlocks booth" style="color:#E90E82">unlock</a>'
-		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth" style="color:#E90E82">lockskip</a>'
+		+	'<a id="plug-btn-skip" title="Skips current DJ" style="color:#E90E82">Skip</a>'
+		+	'<a id="plug-btn-lock" title="Locks booth" style="color:#E90E82">Lock</a>'
+		+	'<a id="plug-btn-unlock" title="Unlocks booth" style="color:#E90E82">Unlock</a>'
+		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth" style="color:#E90E82">Lockskip</a>'
     );
 }
 
