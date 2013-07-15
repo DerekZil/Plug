@@ -543,7 +543,7 @@ function populateUserlist() {
         var waitpostime = Models.room.getWaitListPosition() * 240;
         var offset = API.getMedia().duration - 240;
         var approxtime = waitpostime + offset;
-        var timeDiv = $('<h3 title="Estimated wait time until on the booth."</h3>').addClass('timewait').text('wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
+        var timeDiv = $('<h3 title="Estimated wait time until on the booth."</h3>').addClass('timewait').text('Wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
         $('#side-left .sidebar-content2').append(waitlistDiv);
         $('#side-left .sidebar-content2').append(spot !== null ? timeDiv : '');
         $('#side-left .sidebar-content2').append('<div class="meanlist"></div>');
