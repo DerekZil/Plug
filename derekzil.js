@@ -128,7 +128,7 @@ var fbMsg = "/me Check out our social links for DTE! Facebook Page: http://bit.l
 var enMsg = ["English only in chat!", "Speak English or you will get kicked."];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
-var wafflesMsg = ["Please be appropriate in the chat.", "Please do not talk like that, control yourself!",  "Please be mature in the chat guys."];
+var bhvMsg = ["Please be appropriate in the chat.", "Please do not talk like that, control yourself!",  "Please be mature in the chat guys."];
 var sleepMsg = ["Bye, I am out for tonight!", "Going to sleep now.", "Bed time!", "Tiredness... taking... over... must sleep."];
 var workMsg = ["I'm off to work, cya.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
@@ -230,7 +230,7 @@ function displayUI() {
 		+	'<a id="plug-btn-en" title="Sends English only message." style="color:#FF8C00">English Only</a>'
 		+	'<a id="plug-btn-fans" title="Sends no fan message." style="color:#FF8C00">No Fans</a>'
 		+	'<a id="plug-btn-noskip" title="Sends no skip message." style="color:#FF8C00">No Skip</a>'
-		+	'<a id="plug-btn-waffles" title="Sends behave message." style="color:#FF8C00">Behave</a>'
+		+	'<a id="plug-btn-bhv" title="Sends behave message." style="color:#FF8C00">Behave</a>'
 		+	'<a title="Status" style="color:#FFFFF">Status:</a>'
 		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping." style="color:#FF8FEE">Sleeping</a>'
 		+	'<a id="plug-btn-working" title="Sends work message and sets status to working." style="color:#FF8FEE">Working</a>'
@@ -338,11 +338,11 @@ function initUIListeners() {
 			API.sendChat(skipMsg[Math.floor(Math.random() * skipMsg.length)]);
 		}
 	});
-	$("#plug-btn-waffles").on("click", function() {
+	$("#plug-btn-bhv").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(wafflesMsg[Math.floor(Math.random() * wafflesMsg.length)]);
+			API.sendChat(bhvMsg[Math.floor(Math.random() * bhvMsg.length)]);
 		}
 	});
 	$("#plug-btn-sleeping").on("click", function() {
