@@ -18,7 +18,7 @@ function autoSkip() {
 function roomSkip() {
 	var tv = Models.room.roomScore.negative + Models.room.roomScore.positive;
 	var tvp = Models.room.roomScore.negative / tv;
-	if(tvp >= 15) {
+	if(tvp >= 20) {
 		new ModerationForceSkipService;
 		API.sendChat("Room voted to skip!");
 	}
