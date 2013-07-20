@@ -1,14 +1,12 @@
 function delay() {
-    setTimeout("load();", 6000);
-	setTimeout(function(){RoomUser.audience.roomElements = []; RoomUser.redraw();}, 4000);
-	setTimeout("chatListener();", 10000);
+        setTimeout("load();", 6000);
 }
 
 function load() {
 	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
 	script.type = 'text/javascript';
-	script.src = 'https://raw.github.com/DerekZil/Plug/master/cookies.js';
+	script.src = 'http://cookies.googlecode.com/svn/trunk/jaaulde.cookies.js';
 	script.onload = readCookies;
 	head.appendChild(script);
 }
@@ -28,10 +26,6 @@ function readCookies() {
     	streaming = value != null ? value: true;
     	value = jaaulde.utils.cookies.get(COOKIE_HIDE_VIDEO);
     	hideVideo = value != null ? value : false;
-    	var value = jaaulde.utils.cookies.get(COOKIE_EMOTES);
-    	emotes = value != null ? value : true;
-    	var value = jaaulde.utils.cookies.get(COOKIE_AUDIENCE);
-    	audience = value != null ? value : true;
     	var value = jaaulde.utils.cookies.get(COOKIE_LEFT);
     	left = value != null ? value : false;
 	onCookiesLoaded();
@@ -50,9 +44,6 @@ function onCookiesLoaded() {
 	}
 	if (left) {
 		$(".sidebar#side-left").animate({"left": left ? "0px" : "-190px"}, 300, "easeOutCirc");
-	}
-	if (!emotes) Emoji.emojify = function(data) {
-		return data;
 	}
 	if (!audience) {
 		$('#audience').hide();
@@ -118,26 +109,25 @@ var COOKIE_WOOT = 'autowoot';
 var COOKIE_QUEUE = 'autoqueue';
 var COOKIE_STREAMING = 'streaming';
 var COOKIE_HIDE_VIDEO = 'hidevideo';
-var COOKIE_EMOTES = 'emotes';
-var COOKIE_AUDIENCE = 'audience';
 var COOKIE_LEFT = 'left';
 var MAX_USERS_WAITLIST = 50;
 
-var rulesMsg = "/me Rules: 1.) Do not ask to skip a song. 2.) No Spamming. 3.) No songs over 8 minutes. 4.) No NSFW content: Nudity, gore, etc. 5.) Don't argue with higher ranks. 6.) No advertising other rooms. 7.) Please don't post scripts in chat.";
-var fbMsg = "/me Check out our social links for DTE! Facebook Page: http://bit.ly/DTandE-FB - Forums: http://bit.ly/dteforms";
-var enMsg = ["English only in chat!", "Speak English or you will get kicked."];
+var rulesMsg = "Rules: We are all friends here. We do not want to see any trolling, spamming or any behaviour that targets any of the moderators or users in the room such as racism, sexism, or harassment."; 
+var rulesMsg2 = "Try to keep song limit to 8 minutes long, everyone else needs time to play songs.";
+var rulesMsg3 = "Above all, have fun and enjoy the music people!";
+var linksMsg = ["to be assigned"];
 var skipMsg = ["Please do not ask to skip songs.", "Asking to skip songs can lead to being kicked!"];
 var fansMsg = ["Please do not ask for fans.", "Earn your fans like the rest of us."];
-var bhvMsg = ["Please be appropriate in the chat.", "Please do not talk like that, control yourself!",  "Please be mature in the chat guys."];
-var sleepMsg = ["Bye, I am out for tonight!", "Going to sleep now.", "Bed time!", "Tiredness... taking... over... must sleep."];
-var workMsg = ["I'm off to work, cya.", "I'm going to be busy for a while, mention if needed."];
+var wafflesMsg = ["WAFFLES FOR EVERYONE!! #-(>_<)-#", "did somebody say WAFFLES? #-(>_<)-#", "cheese ca- I mean WAFFLES TIME! #-(>_<)-#", "do you know what it is time for? WAFFLES #-(>_<)-#"];
+var bhvMsg = ["please be appropriate in the chat", "please do not talk like that, control yourself!",  "please be mature in the chat guys"];
+var sleepMsg = ["Bye, i am out for today!", "Going to sleep now.", "Bed time!", "tiredness... taking... over... must sleep"];
+var workMsg = ["I'm working so mention me if I'm needed.", "I'm going to be busy for a while, mention if needed."];
 var afkMsg = ["Stepping away for a moment.", "Going AFK for a while, be back soon!"];
-var backMsg = ["I have returned.", "I'm bacckkk."];
-var spamMsg = ["Please get rid of your AutoWoot, it spams the chat.", "Your AutoWoot is no good, it spams the chat without you knowing and would be best to remove it.", "Your AutoWoot sends messages, remove it or you will be kicked.", "Your AutoWoot spams chat, remove it or you will leave the room.", "Remove your AutoWoot because it is spamming the chat, or you will get kicked!"];
+var backMsg = ["I have returned", "I'm baaacckkk"];
 
-var autoAwayMsg = ["I'm currently AFK.", "I'm AFK.", "I'm on an adventure. (AFK)", "Gone away for a moment", "Not present at keyboard."];
-var autoSlpMsg = ["I'm currently sleeping.", "I'm counting sheep in my dreams.", "I'm asleep.", "I've gone to sleep."];
-var autoWrkMsg = ["I'm currently working.", "I'm busy.", "I shall get back to you when I can."];
+var autoAwayMsg = ["I'm currently AFK", "I'm AFK", "I'm on an adventure (afk)", "gone away for a moment", "not present at keyboard"];
+var autoSlpMsg = ["I'm currently sleeping", "I'm counting sheep in my dreams", "I've hit the sack", "I'm asleep", "I've gone to sleep"];
+var autoWrkMsg = ["I'm currently working", "I'm busy", "I shall get back to you when i can."];
 
 var styles = [
             '.sidebar {position: fixed; top: 0; height: 100%; width: 200px; z-index: 99999; background-image: linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -o-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -moz-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -ms-linear-gradient(bottom, #000000 0%, #3B5678 100%);background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #000000),color-stop(1, #3B5678));}',
@@ -193,18 +183,17 @@ var scripts = [
 ];
 
 function initAPIListeners() {
-	API.addEventListener(API.DJ_ADVANCE, djAdvanced);
-  	API.addEventListener(API.CHAT, autoRespond);
-  	API.addEventListener(API.DJ_UPDATE, queueUpdate);
-  	API.addEventListener(API.ROOM_SCORE_UPDATE, roomSkip);
-  	API.addEventListener(API.VOTE_UPDATE, function (obj) {
+	API.on(API.DJ_ADVANCE, djAdvanced);
+  	API.on(API.CHAT, autoRespond);
+  	API.on(API.DJ_UPDATE, queueUpdate);
+  	API.on(API.VOTE_UPDATE, function (obj) {
             	populateUserlist();
 
     	});
-	API.addEventListener(API.USER_JOIN, function (user) {
+	API.on(API.USER_JOIN, function (user) {
           	populateUserlist();
     	});
-    	API.addEventListener(API.USER_LEAVE, function (user) {
+    	API.on(API.USER_LEAVE, function (user) {
             	populateUserlist();
     	});
 }
@@ -214,33 +203,29 @@ function displayUI() {
     	var colorQueue = autoqueue ? '#3FFF00' : '#ED1C24';
     	var colorStream = streaming ? '#3FFF00' : '#ED1C24';
     	var colorVideo = hideVideo ? '#3FFF00' : '#ED1C24';
-    	var colorEmotes = emotes ? '#3FFF00' : '#ED1C24';
-    	var colorAudience = audience ? '#3FFF00' : '#ED1C24';
 	$('#side-right .sidebar-content').append(
 			'<a title="Settings" style="color:#FFFFF">Settings:</a>'
 		+	'<a id="plug-btn-woot" title="Toggle AutoWoot" style="color:' + colorWoot + '">Auto Woot</a>'
 		+ 	'<a id="plug-btn-queue" title="Toggle AutoQueue" style="color:' + colorQueue + '">Auto Queue</a>'
 		+ 	'<a id="plug-btn-stream" title="Toggle Video Stream" style="color:' + colorStream + '">Video Streaming</a>'
 		+ 	'<a id="plug-btn-hidevideo" title="Toggle Video" style="color:' + colorVideo + '">Hide Video</a>'
-		+	'<a id="plug-btn-emotes" title="Toggle Emoticons" style="color:' + colorEmotes + '">Emoticons</a>'
-		+	'<a id="plug-btn-audience" title="Toggle Audience" style="color:' + colorAudience + '">Audience</a>'
 		+	'<a title="Messages" style="color:#FFFFF">Messages:</a>'
-		+	'<a id="plug-btn-rules" title="Sends Rules" style="color:#FF8C00">Rules</a>'
-		+	'<a id="plug-btn-face" title="Sends Facebook and Forums links." style="color:#FF8C00">Social Links</a>'
-		+	'<a id="plug-btn-en" title="Sends English only message." style="color:#FF8C00">English Only</a>'
-		+	'<a id="plug-btn-fans" title="Sends no fan message." style="color:#FF8C00">No Fans</a>'
-		+	'<a id="plug-btn-noskip" title="Sends no skip message." style="color:#FF8C00">No Skip</a>'
-		+	'<a id="plug-btn-bhv" title="Sends behave message." style="color:#FF8C00">Behave</a>'
-		+	'<a title="Status" style="color:#FFFFF">Status:</a>'
-		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping." style="color:#FF8FEE">Sleeping</a>'
-		+	'<a id="plug-btn-working" title="Sends work message and sets status to working." style="color:#FF8FEE">Working</a>'
-		+	'<a id="plug-btn-afk" title="Sends AFK message and sets status to AFK." style="color:#FF8FEE">AFK</a>'
-		+	'<a id="plug-btn-back" title="Sends available message and sets status to available." style="color:#FF8FEE">Available</a>'
+		+	'<a id="plug-btn-rules" title="Sends rules" style="color:#FF8C00">Rules</a>'
+		+	'<a id="plug-btn-face" title="Sends fb and forums links" style="color:#FF8C00">Social Links</a>'
+		+	'<a id="plug-btn-en" title="Sends English only message" style="color:#FF8C00">English Only</a>'
+		+	'<a id="plug-btn-fans" title="Sends fan message" style="color:#FF8C00">No Fans</a>'
+		+	'<a id="plug-btn-noskip" title="Send no skip message" style="color:#FF8C00">No Skip</a>'
+		+	'<a id="plug-btn-waffles" title="Sends waffle message" style="color:#FF8C00">Waffles</a>'
+		+	'<a title="Changes your status" style="color:#FFFFF">Status:</a>'
+		+	'<a id="plug-btn-sleeping" title="Sends sleep message and sets status to sleeping" style="color:#FF8FEE">Sleeping</a>'
+		+	'<a id="plug-btn-working" title="Sends work message and sets status to working" style="color:#FF8FEE">Working</a>'
+		+	'<a id="plug-btn-afk" title="Sends afk message and sets status to afk" style="color:#FF8FEE">AFK</a>'
+		+	'<a id="plug-btn-back" title="Sends available message and sets status to available" style="color:#FF8FEE">Available</a>'
 		+	'<a title="Moderation" style="color:#FFFFF">Moderation:</a>'
-		+	'<a id="plug-btn-skip" title="Skips current DJ." style="color:#E90E82">Skip</a>'
-		+	'<a id="plug-btn-lock" title="Locks Booth" style="color:#E90E82">Lock</a>'
-		+	'<a id="plug-btn-unlock" title="Unlocks Booth" style="color:#E90E82">Unlock</a>'
-		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth." style="color:#E90E82">Lockskip</a>'
+		+	'<a id="plug-btn-skip" title="Skips current DJ" style="color:#E90E82">skip</a>'
+		+	'<a id="plug-btn-lock" title="Locks booth" style="color:#E90E82">lock</a>'
+		+	'<a id="plug-btn-unlock" title="Unlocks booth" style="color:#E90E82">unlock</a>'
+		+	'<a id="plug-btn-lockskip" title="Locks booth, skips DJ, then unlocks booth" style="color:#E90E82">lockskip</a>'
     );
 }
 
@@ -308,13 +293,8 @@ function initUIListeners() {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
 			API.sendChat(rulesMsg);
-		}
-	});
-	$("#plug-btn-face").on("click", function() {
-		if (clicked == false) {
-			clicked = true;
-			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(fbMsg);
+                        setTimeout("API.sendChat(rulesMsg2)", 1500);
+                        setTimeout("API.sendChat(rulesMsg3)", 3000);
 		}
 	});
 	$("#plug-btn-en").on("click", function() {
@@ -338,20 +318,20 @@ function initUIListeners() {
 			API.sendChat(skipMsg[Math.floor(Math.random() * skipMsg.length)]);
 		}
 	});
-	$("#plug-btn-bhv").on("click", function() {
+	$("#plug-btn-waffles").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			API.sendChat(bhvMsg[Math.floor(Math.random() * bhvMsg.length)]);
+			API.sendChat(wafflesMsg[Math.floor(Math.random() * wafflesMsg.length)]);
 		}
 	});
 	$("#plug-btn-sleeping").on("click", function() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 3) {
+			if (API.getUser().status != 3) {
 				API.sendChat(sleepMsg[Math.floor(Math.random() * sleepMsg.length)]);
-				Models.user.changeStatus(3);
+				API.setStatus(API.STATUS.SLEEPING);
 			}
 		}
 	});
@@ -359,9 +339,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 2) {
+			if (API.getUser().status != 2) {
 				API.sendChat(workMsg[Math.floor(Math.random() * workMsg.length)]);
-				Models.user.changeStatus(2);
+				API.setStatus(API.STATUS.WORKING);
 			}
 		}
 	});	
@@ -369,9 +349,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 1) {
+			if (API.getUser().status != 1) {
 				API.sendChat(afkMsg[Math.floor(Math.random() * afkMsg.length)]);
-				Models.user.changeStatus(1);
+				API.setStatus(API.STATUS.AFK);
 			}
 		}
 	});
@@ -379,9 +359,9 @@ function initUIListeners() {
 		if (clicked == false) {
 			clicked = true;
 			clickTimer = setInterval("checkClicked();", 1000);
-			if (Models.user.data.status != 0) {
+			if (API.getUser().status != 0) {
 				API.sendChat(backMsg[Math.floor(Math.random() * backMsg.length)]);
-				Models.user.changeStatus(0);
+				API.setStatus(API.STATUS.AVAILABLE);
 			}
 		}
 	});
@@ -389,22 +369,22 @@ function initUIListeners() {
 		if (skipped == false) {
 			skipped = true;
 			skipTimer = setInterval("checkSkipped();", 500);
-			new ModerationForceSkipService;
+			API.moderateForceSkip();
 		}
 	});
 	$("#plug-btn-lock").on("click", function() {
-		new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);
+		API.moderateRoomProps(true, true);
 	});
 	$("#plug-btn-unlock").on("click", function() {
-		new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);
+		API.moderateRoomProps(false, true);
 	});
 	$("#plug-btn-lockskip").on("click", function() {
 		if (skipped == false) {
 			skipped = true;
 			skipTimer = setInterval("checkSkipped();", 500);
-			new RoomPropsService(document.location.href.split('/')[3],true,true,1,5);
-			new ModerationForceSkipService;
-			new RoomPropsService(document.location.href.split('/')[3],false,true,1,5);
+			API.moderateRoomProps(true, true);
+			API.moderateForceSkip();
+			API.moderateRoomProps(false, true);
 		}
 	});
 }
@@ -416,7 +396,7 @@ function queueUpdate() {
 }
 
 function isInQueue() {
-	var self = API.getSelf();
+	var self = API.getUser();
     	return API.getWaitList().indexOf(self) !== -1 || API.getDJs().indexOf(self) !== -1;
 }
 
@@ -425,23 +405,23 @@ function joinQueue() {
 		$('#button-dj-play').click();
     	} 
 	else if (API.getWaitList().length < MAX_USERS_WAITLIST) {
-        API.waitListJoin();
+        API.djJoin();
     	}
 }
 
 function autoRespond(data) {
-	var a = data.type == "mention" && Models.room.data.staff[data.fromID] && Models.room.data.staff[data.fromID] >= Models.user.BOUNCER, b = data.message.indexOf('@') >0;
+	var a = data.type == "mention" && API.getStaff[data.fromID] && API.getStaff[data.fromID] >= API.ROLE.BOUNCER, b = data.message.indexOf('@') >0;
 	if (data.type == "mention" && mentioned == false) {
 		if (API.getUser(data.fromID).status == 0) {
 			mentioned = true;
 			timer = setInterval("checkMentioned();", 1000);
-			if (Models.user.data.status == 1) {
+			if (API.getUser().status == 1) {
 				API.sendChat("@" + data.from + " automsg: " + autoAwayMsg[Math.floor(Math.random() * autoAwayMsg.length)]);
 			}
-			if (Models.user.data.status ==2) {
+			if (API.getUser().status == 2) {
 				API.sendChat("@" + data.from + " automsg: " + autoWrkMsg[Math.floor(Math.random() * autoWrkMsg.length)]);
 			}
-			if (Models.user.data.status ==3) {
+			if (API.getUser().status == 3) {
 				API.sendChat("@" + data.from + " automsg: " + autoSlpMsg[Math.floor(Math.random() * autoSlpMsg.length)]);
 			}
 		}
@@ -449,13 +429,12 @@ function autoRespond(data) {
 }
 
 function djAdvanced(obj) {
-	setTimeout("autoSkip();", 6000);
 	if (hideVideo) {
 		$("#yt-frame").css("height", "0px");
 		$("#playback .frame-background").css("opacity", "0.0");
 	}
 	if (autowoot) {
-		setTimeout("$('#button-vote-positive').click();", 7000);
+		$('#button-vote-positive').click();
 	}
 	if (predictor == false) {
 		predictor = true;
@@ -473,18 +452,12 @@ function populateUserlist() {
     	var totalWOOTs = 0;
     	var totalUNDECIDEDs = 0;
     	var str = '';
-	var myid = API.getSelf().id;
+	var myid = API.getUser().id;
 	for (i in a) {
-		if (a[i].admin) {
-			a[i].permission = 99;
-		}
-		if (a[i].ambassador) {
-			a[i].permission = 50;
-		}
         	str = '<span class="chat-from-clickable ';
-        	if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 99) {
+        	if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 10) {
             		str += 'chat-from-admin ';
-        	} else if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 50) {
+        	} else if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 9) {
             		str += 'chat-from-ambassador ';
         	}
         	else if (typeof (a[i].permission) !== 'undefined' && a[i].permission == 5) {
@@ -505,7 +478,7 @@ function populateUserlist() {
         	if (a[i].id === myid) {
             		str += 'chat-from-you ';
         	}
-        	str += '" onclick="$(\'#chat-input-field\').val($(\'#chat-input-field\').val() + \'@' + a[i].username + ' \').focus();" title="Click to mention.">' + a[i].username + '</span>';
+        	str += '" onclick="$(\'#chat-input-field\').val($(\'#chat-input-field\').val() + \'@' + a[i].username + ' \').focus();" title="click to mention">' + a[i].username + '</span>';
         	if (typeof (a[i].vote) !== 'undefined' && a[i].vote == -1) {
             		totalMEHs++;
             		mehlist += str; 
@@ -514,7 +487,7 @@ function populateUserlist() {
             		totalWOOTs++;
             		wootlist += str; 
         	}
-        	else if (a[i].id == Models.room.data.currentDJ) {
+        	else if (a[i].id == API.getDJs()[0]) {
         		currentdj += str;
         	}
         	else {
@@ -530,26 +503,26 @@ function populateUserlist() {
         	totalMEHsPercentage = totalWOOTsPercentage = 0;
     	}
     	currentdj = ' ' + currentdj;
-	mehlist = '<a title="Total Mehs">' + ' ' + totalMEHs.toString() + '</a><a title="Meh Percentage">' + ' (' + totalMEHsPercentage.toString() + '&#37;)' + '</a>' + mehlist;
-    	wootlist = '<a title="Total Woots">' + ' ' + totalWOOTs.toString() + '</a><a title="Woot Percentage">' + ' (' + totalWOOTsPercentage.toString() + '&#37;)' + '</a>' + wootlist;
+	mehlist = '<a title="total mehs">' + ' ' + totalMEHs.toString() + '</a><a title=" meh percentage">' + ' (' + totalMEHsPercentage.toString() + '&#37;)' + '</a>' + mehlist;
+    	wootlist = '<a title="total woots">' + ' ' + totalWOOTs.toString() + '</a><a title=" woot percentage">' + ' (' + totalWOOTsPercentage.toString() + '&#37;)' + '</a>' + wootlist;
     	undecidedlist = ' ' + totalUNDECIDEDs.toString() + undecidedlist;
 	if ($('#side-left .sidebar-content2').children().length > 0) {
             	$('#side-left .sidebar-content2').append();
 	}
-        $('#side-left .sidebar-content2').html('<h3 class="users" title="Number of users in the room.">Users: ' + API.getUsers().length + '</h3>');
-        var spot = Models.room.getWaitListPosition();
-        var waitlistDiv = $('<h3 title="Waitlist Posisition"></h3>').addClass('waitlistspot').text('Waitlist: ' + (spot !== null ? spot + ' / ' : '') + Models.room.data.waitList.length);
-        var waitpostime = Models.room.getWaitListPosition() * 240;
+        $('#side-left .sidebar-content2').html('<h3 class="users" title="number of users in the room">users: ' + API.getUsers().length + '</h3>');
+        var spot = API.getWaitListPosition();
+        var waitlistDiv = $('<h3 title="waitlist posisition"></h3>').addClass('waitlistspot').text('waitlist: ' + (spot !== null ? spot + ' / ' : '') + API.getWaitList().length);
+        var waitpostime = API.getWaitListPosition() * 240;
         var offset = API.getMedia().duration - 240;
         var approxtime = waitpostime + offset;
-        var timeDiv = $('<h3 title="Estimated wait time until on the booth."</h3>').addClass('timewait').text('Wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
+        var timeDiv = $('<h3 title="approx. wait time until on the booth"</h3>').addClass('timewait').text('wait: ' + (spot !== null ? sts(decodeURIComponent(approxtime)) + ' ' : ''));
         $('#side-left .sidebar-content2').append(waitlistDiv);
         $('#side-left .sidebar-content2').append(spot !== null ? timeDiv : '');
         $('#side-left .sidebar-content2').append('<div class="meanlist"></div>');
         $(".meanlist").append( 
-        		'<div id="currentdj_div" style="border: 1px solid rgb(0, 112, 255);"><a title="Current DJ">Current DJ:</a>' +   currentdj + '</div>'
-        	+ 	'<div id="mehlist_div" style="border: 1px solid rgb(233, 6, 6);"><a title="Meh List">Meh List:</a>' +   mehlist + '</div>' 
-        	+ 	'<div id="wootlist_div" style="border: 1px solid rgb(2, 140, 7);"><a title="Woot List">Woot List:</a>' + wootlist + '</div>'
+        		'<div id="currentdj_div" style="border: 1px solid rgb(0, 112, 255);"><a title="current dj">current dj:</a>' +   currentdj + '</div>'
+        	+ 	'<div id="mehlist_div" style="border: 1px solid rgb(233, 6, 6);"><a title="meh list">meh list:</a>' +   mehlist + '</div>' 
+        	+ 	'<div id="wootlist_div" style="border: 1px solid rgb(2, 140, 7);"><a title="woot list">woot list:</a>' + wootlist + '</div>'
         	+	'<div id="spacer_div"></br></br></div>'
         );
 }
@@ -614,237 +587,9 @@ function checkPredict() {
 	}
 }
 
-function chatListener() {
-  	var antispam, strobeOnCommand, Command, User, apiHooks, chatCommandDispatcher, chatUniversals, cmds, data, hook, initHooks, initialize, populateUserData, settings, undoHooks, unhook,
-    	__bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-    	__indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; },
-    	__hasProp = {}.hasOwnProperty,
-    	__extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-  	settings = (function() {
-    		function settings() {
-      			this.getRoomUrlPath = __bind(this.getRoomUrlPath, this);
-      			this.startup = __bind(this.startup, this);
-		}
-    		settings.prototype.users = {};
-    		settings.prototype.roomUrlPath = null;
-    		settings.prototype.launchTime = null;
-    		settings.prototype.startup = function() {
-      		this.launchTime = new Date();
-      		return this.roomUrlPath = this.getRoomUrlPath();
-    		};
-    		settings.prototype.getRoomUrlPath = function() {
-      			return window.location.pathname.replace(/\//g, '');
-    		};
-    		return settings;
-  	})();
-  	data = new settings();
-  	User = (function() {
-
-    		function User(user) {
-      			this.user = user;
-      			this.getIsDj = __bind(this.getIsDj, this);
-     			this.getUser = __bind(this.getUser, this);
-    		}
-    		User.prototype.getUser = function() {
-      			return this.user;
-    		};
-    		User.prototype.getIsDj = function() {
-      			var DJs, dj, _i, _len;
-      			DJs = API.getDJs();
-      			for (_i = 0, _len = DJs.length; _i < _len; _i++) {
-        			dj = DJs[_i];
-        			if (this.user.id === dj.id) {
-          				return true;
-        			}
-      			}
-      			return false;
-    		};
-    		return User;
-	})(); 
-  	populateUserData = function() {
-    		var u, users, _i, _len;
-    		users = API.getUsers();
-    		for (_i = 0, _len = users.length; _i < _len; _i++) {
-      			u = users[_i];
-      			data.users[u.id] = new User(u);
-    		}
-  	};
-  	initialize = function() {
-    		populateUserData();
-    		initHooks();
-    		data.startup();
-  	};
-  	Command = (function() {
-    		function Command(msgData) {
-      			this.msgData = msgData;
-      			this.init();
-    		}
-    		Command.prototype.init = function() {
-      			this.parseType = null;
-      			this.command = null;
-      			return this.rankPrivelege = null;
-    		};
-    		Command.prototype.functionality = function(data) {};
-    		Command.prototype.hasPrivelege = function() {
-      			var user;
-     			user = data.users[this.msgData.fromID].getUser();
-     			switch (this.rankPrivelege) {
-        			case 'host':
-          				return user.permission === 5;
-        			case 'cohost':
-          				return user.permission >= 4;
-        			case 'mod':
-          				return user.permission >= 3;
-        			case 'manager':
-          				return user.permission >= 3;
-        			case 'bouncer':
-          				return user.permission >= 2;
-        			case 'featured':
-          				return user.permission >= 1;
-        			default:
-          				return true;
-      			}
-    		};
-    		Command.prototype.commandMatch = function() {
-      			var command, msg, _i, _len, _ref;
-      			msg = this.msgData.message;
-      			if (typeof this.command === 'string') {
-        			if (this.parseType === 'exact') {
-          				if (msg === this.command) {
-            					return true;
-          				} else {
-            					return false;
-          				}
-        			} else if (this.parseType === 'startsWith') {
-          				if (msg.substr(0, this.command.length) === this.command) {
-            					return true;
-          				} else {
-            					return false;
-          				}
-        			} else if (this.parseType === 'contains') {
-          				if (msg.indexOf(this.command) !== -1) {
-            					return true;
-          				} else {
-            					return false;
-          				}
-        			}
-      			} else if (typeof this.command === 'object') {
-        			_ref = this.command;
-        			for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          				command = _ref[_i];
-          				if (this.parseType === 'exact') {
-            					if (msg === command) {
-              						return true;
-            					}
-          				} else if (this.parseType === 'startsWith') {
-            					if (msg.substr(0, command.length) === command) {
-              						return true;
-            					}
-          				} else if (this.parseType === 'contains') {
-            					if (msg.indexOf(command) !== -1) {
-              						return true;
-            					}
-          				}
-        			}
-        			return false;
-      			}
-    		};
-    		Command.prototype.evalMsg = function() {
-      			if (this.commandMatch() && this.hasPrivelege()) {
-        			this.functionality();
-        			return true;
-      			} else {
-        			return false;
-      			}
-    		};
-    		return Command;
-  	})();
-  	strobeOnCommand = (function(_super) { 
-    		__extends(strobeOnCommand, _super);
-    		function strobeOnCommand() {
-        		return strobeOnCommand.__super__.constructor.apply(this, arguments);
-    		}
-    		strobeOnCommand.prototype.init = function() {
-        		this.command = '/strobe on';
-        		this.parseType = 'exact';
-        		return this.rankPrivelege = 'manager';
-    		};
-    		strobeOnCommand.prototype.functionality = function() {
-      			return RoomUser.audience.strobeMode(true);
-    		}
-    		return strobeOnCommand;
-  	})(Command);
-  	cmds = [strobeOnCommand];
-  	chatCommandDispatcher = function(chat) {
-    		var c, cmd, _i, _len, _results;
-    		chatUniversals(chat);
-    		_results = [];
-    		for (_i = 0, _len = cmds.length; _i < _len; _i++) {
-      			cmd = cmds[_i];
-      			c = new cmd(chat);
-      			if (c.evalMsg()) {
-        			break;
-      			} else {
-        			_results.push(void 0);
-      			}
-    		}
-    		return _results;
-  	};
-  	antispam = function(chat) {
-  		var plugRoomLinkPatt, sender;
-  		plugRoomLinkPatt = /(\bhttps?:\/\/(www.)?adf\.ly[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-  		if (plugRoomLinkPatt.exec(chat.message)) {
-    			sender = API.getUser(chat.fromID);
-    			if (!sender.ambassador && !sender.moderator && !sender.owner && !sender.superuser) {
-    				API.sendChat("@" + sender.username + " " + spamMsg[Math.floor(Math.random() * spamMsg.length)]);
-       				return API.moderateDeleteChat(chat.chatID);
-     			}
-   		}
-   		return antispam;
- 	};
-  	chatUniversals = function(chat) {
-      		antispam(chat);
-  	};
-  	hook = function(apiEvent, callback) {
-    		return API.addEventListener(apiEvent, callback);
-  	};
-  	unhook = function(apiEvent, callback) {
-    		return API.removeEventListener(apiEvent, callback);
-  	};
-  	apiHooks = [
-    		{
-      			'event': API.CHAT,
-      			'callback': chatCommandDispatcher
-    		}
-  	];
-  	initHooks = function() {
-    		var pair, _i, _len, _results;
-    		_results = [];
-    		for (_i = 0, _len = apiHooks.length; _i < _len; _i++) {
-      			pair = apiHooks[_i];
-      			_results.push(hook(pair['event'], pair['callback']));
-    		}
-    		return _results;
-  		};
-  	undoHooks = function() {
-    		var pair, _i, _len, _results;
-   		 _results = [];
-    		for (_i = 0, _len = apiHooks.length; _i < _len; _i++) {
-      			pair = apiHooks[_i];
-      			_results.push(unhook(pair['event'], pair['callback']));
-    		}
-    		return _results;
-  	};
-  	initialize();
-}
-
 delay();
-$('#plugbot-js').remove();
-log("Also, welcome to ★Insanity Realms★, coded by DerekZil. Version: 4.1.4");
-log("Type '/commands' to see extra commands.");
-$('body').prepend('<script type="text/javascript" id="autoskip-js" src="https://raw.github.com/DerekZil/Plug/master/autoskip.js" />');
-$('body').prepend('<script type="text/javascript" id="blacklist-js" src="https://raw.github.com/DerekZil/Plug/master/blacklist.js" />');
-$('body').prepend('<script type="text/javascript" id="modcommands-js" src="https://raw.github.com/DerekZil/Plug/master/modcommands.js" />');
+$('body').prepend('<script type="text/javascript" id="omg-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/blacklist.js" />');
+$('body').prepend('<script type="text/javascript" id="game-js" src="https://raw.github.com/NitroGhost/EDMbassy/master/game.js" />');
 $('body').prepend('<style type="text/css" id="plug-css">' + "\n" + styles.join("\n") + "\n" + '</style>');
 $('body').append('</div><div id="side-right" class="sidebar">' + '<div class="sidebar-handle"><span>|||</span></div>' + '<div class="sidebar-content"></div>' + '<div id="hr-div"><div><div id="hr-style"></div></div></div>' + '</div><div id="side-left" class="sidebar">' + '<div class="sidebar-handle" title="show/hide userlist"><span>|||</span></div>' + '<div class="sidebar-content2"></div>' + '<div id="hr2-div2"><div><div id="hr2-style2"></div></div></div>' + '</div>');
 $('body').append('<script type="text/javascript" id="plug-js-extra">' + "\n" + scripts.join("\n") + "\n" + '</script>');
