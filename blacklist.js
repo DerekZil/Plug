@@ -3,7 +3,7 @@ var ohmahgawdedWait = 600000;
 var ohmahgawdedPassed = 0;
 var ohmahgawdedTimer = null;
 var omgMsg = [
-  " #1: OH... MAH GAWD!", 
+	" #1: OH... MAH GAWD!", 
 	" #2: Merciful Heavens!", 
 	" #3: Goodness Gracious!", 
 	" #4: Zounds!", 
@@ -72,4 +72,4 @@ function checkOhmahgawded() {
 	else {
 		ohmahgawdedPassed = ohmahgawdedPassed + 1000;
 	}
-Corn
+}
