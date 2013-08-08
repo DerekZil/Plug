@@ -1,2 +1,0 @@
-★Insanity Realms★ Scripts
-====
